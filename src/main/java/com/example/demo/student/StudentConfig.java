@@ -9,7 +9,7 @@ import java.time.Month;
 @Configuration
 public class StudentConfig {
 
-    @Bean
+    @Bean // initializing the database with some data
     CommandLineRunner commandLineRunner(StudentRepository studentRepository) {
         return args -> {
             Student Iheb = new Student(

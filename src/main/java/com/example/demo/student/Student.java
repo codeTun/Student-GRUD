@@ -29,10 +29,11 @@ public class Student {
     private String studentName;
     private LocalDate studentDob;
     private String studentEmail;
+
     @Transient // this is not a column in the database
     private Integer studentAge;
 
-    public Student(String studentName, LocalDate studentDob, String studentEmail) {
+    Student(String studentName, LocalDate studentDob, String studentEmail) {
         this.studentName = studentName;
         this.studentDob = studentDob;
         this.studentEmail = studentEmail;

@@ -23,4 +23,25 @@ public class StudentService {
         System.out.println(student);
     }
 
+    public void deleteStudent(Long studentId) {
+        boolean exists = studentRepository.existsById(studentId);
+        if (!exists) {
+            throw new IllegalStateException("student with id " + studentId + " does not exists");
+        }
+        studentRepository.deleteById(studentId);
+    }
+
+    public void updateStudent(Long studentId, String name, String email) {
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new IllegalStateException("student with id " + studentId + " does not exists"));
+
+        if (name != null && name.length() > 0 && !student.getStudentName().equals(name)) {
+            student.setStudentName(name);
+        }
+
+        if (email != null && email.length() > 0 && !student.getStudentEmail().equals(email)) {
+            student.setStudentEmail(email);
+        }
+    }
+
 }
